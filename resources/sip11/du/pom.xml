@@ -21,6 +21,12 @@
             <groupId>${project.parent.groupId}</groupId>
             <artifactId>sip11-ratype</artifactId>
             <version>${project.parent.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.slee</groupId>
+                    <artifactId>jain-slee</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
@@ -60,9 +66,9 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <copy overwrite="true" file="target/${project.build.finalName}.jar" todir="${jboss.home}/standalone/deployments" />
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                     <execution>
@@ -72,9 +78,9 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <delete file="${jboss.home}/standalone/deployments/${project.build.finalName}.jar" />
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
